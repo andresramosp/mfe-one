@@ -1,31 +1,28 @@
 <template>
   <div class="hello">
-    <h1>{{ 'Hello from Micro Frontend One' }}</h1>
-    <ChildComponent />
+    <MfeOneChildComponent/>
+    {{ moment().format('MMMM Do YYYY, h:mm:ss a') }}
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
-import 'element-plus/dist/index.css'
-// import ChildComponent from './ChildComponent.vue'
-import { defineAsyncComponent } from "vue";
+import moment from 'moment';
+import "element-plus/dist/index.css";
+import MfeOneChildComponent from "./MfeOne-ChildComponent.vue";
 
 export default {
   components: {
-    // ChildComponent
-    ChildComponent: defineAsyncComponent(() => import("./ChildComponent.vue")),
-
+    MfeOneChildComponent,
   },
-  props: {
-  },
+  props: {},
 
   setup() {
     const count = ref(0);
 
-    // expose to template and other options API hooks
     return {
       count,
+      moment
     };
   },
 

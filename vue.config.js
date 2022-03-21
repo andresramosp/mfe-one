@@ -9,25 +9,32 @@ module.exports = defineConfig({
     optimization: {
       splitChunks: false
     },
+    // externals: [
+    //   'moment'
+    // ],
     plugins: [
       new ModuleFederationPlugin({
         name: 'MfeOne',
         filename: 'remoteEntry.js',
+        remotes: {
+          ModuleAuth: 'ModuleAuth@http://localhost:9898/remoteEntry.js'
+        },
         exposes: {
            './MfeOne': './src/bootstrap.js' // implica wrapper en consumer que use el mount exportado por main
-          //'./mainComponent': './src/components/MainComponent.vue'
         },
-        // shared: {
-        //   vue: {
-        //     eager: true,
-        //     singleton: true,
-        //     requiredVersion: deps.vue
-        //   },
-        //   'element-plus': {
-        //     eager: true
-        //   }
-        // },
-        shared: require('./package.json').dependencies,
+        shared: {
+          vue: {
+            eager: true,
+            singleton: true,
+            requiredVersion: deps.vue
+          },
+          // moment: {
+          //   singleton: true,
+          //   eager: false,
+          // }
+          //...require('./package.json').dependencies
+        },
+        // shared: require('./package.json').dependencies,
       })
     ]
   }
