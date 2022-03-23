@@ -1,19 +1,23 @@
 <template>
   <div class="hello">
-    <MfeOneChildComponent/>
-    {{ moment().format('MMMM Do YYYY, h:mm:ss a') }}
+    <MfeOneChildComponent />
+    <div class="shared-comp">
+      <SharedComponent />
+    </div>
+    {{ moment().format("MMMM Do YYYY, h:mm:ss a") }}
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
-import moment from 'moment';
-import "element-plus/dist/index.css";
+import moment from "moment";
 import MfeOneChildComponent from "./MfeOne-ChildComponent.vue";
+import SharedComponent from "./SharedComponent.vue";
 
 export default {
   components: {
     MfeOneChildComponent,
+    SharedComponent,
   },
   props: {},
 
@@ -22,7 +26,7 @@ export default {
 
     return {
       count,
-      moment
+      moment,
     };
   },
 
@@ -48,5 +52,14 @@ li {
 }
 a {
   color: #42b983;
+}
+.shared-comp {
+  background-color: lightgray;
+  padding: 10px;
+  width: 400px;
+  margin-top: 10px;
+  position: absolute;
+  right: 50px;
+  top: 200px;
 }
 </style>

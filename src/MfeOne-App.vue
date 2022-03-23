@@ -10,7 +10,11 @@
     <router-link to="/mfeone-route2">Route 2</router-link>
     <br />
     <div v-if="logged" style="margin-top: 20px">
-      <router-view></router-view>
+      <router-view v-slot="{ Component }">
+        <keep-alive>
+          <component :is="Component" />
+        </keep-alive>
+      </router-view>
     </div>
   </div>
 </template>
@@ -18,20 +22,19 @@
 <script>
 import { auth$ } from "ModuleAuth/ModuleAuth";
 import { computed } from "vue";
-import { useStore } from 'vuex'
+import { useStore } from "vuex";
 
 export default {
   name: "App",
   components: {},
   setup() {
-
-    const store = useStore()
+    const store = useStore();
 
     const logged = computed(() => store.getters.logged);
     const userName = computed(() => store.getters.getUserName);
 
     auth$.subscribe((payload) => {
-      store.dispatch('setAuth', payload)
+      store.dispatch("setAuth", payload);
     });
 
     return {

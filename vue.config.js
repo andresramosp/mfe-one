@@ -9,6 +9,9 @@ module.exports = defineConfig({
     optimization: {
       splitChunks: false
     },
+    output: {
+      uniqueName: 'mfeone',
+    },
     // externals: [
     //   'moment'
     // ],
@@ -20,11 +23,12 @@ module.exports = defineConfig({
           ModuleAuth: 'ModuleAuth@http://localhost:9898/remoteEntry.js'
         },
         exposes: {
-           './MfeOne': './src/bootstrap.js' // implica wrapper en consumer que use el mount exportado por main
+           './MfeOne': './src/bootstrap.js', // implica wrapper en consumer que use el mount exportado por main
+           './SharedComponent': './src/components/SharedComponent'
         },
         shared: {
           vue: {
-            eager: true,
+            // eager: true,
             singleton: true,
             requiredVersion: deps.vue
           },
@@ -32,7 +36,7 @@ module.exports = defineConfig({
           //   singleton: true,
           //   eager: false,
           // }
-          //...require('./package.json').dependencies
+          ...require('./package.json').dependencies
         },
         // shared: require('./package.json').dependencies,
       })
