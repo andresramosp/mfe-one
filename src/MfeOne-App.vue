@@ -37,6 +37,9 @@ export default {
       store.dispatch("setAuth", payload);
     });
 
+    store.dispatch('getSteps')
+    store.dispatch('getStepsGeneric')
+
     return {
       logged,
       userName,

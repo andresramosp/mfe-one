@@ -1,6 +1,6 @@
 <template>
   <div style="padding: 20px">
-    <span>This is a shared component from MfeOne with State from MfeOne</span>
+    <span>This is a shared generic component from MfeOne</span>
     <div style="margin-top: 20px">
       <el-steps :active="active" finish-status="success">
         <el-step
@@ -18,16 +18,8 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 
-// Si accedo al Store con useStore se usará un store distinto según
-// el MFE desde el que se ejecute. Si elegimos acoplar el store metiéndolo
-// aquí dentro, hay que hacer exposes + remotes del store para que sea el mismo
-
-// const store = useStore();
-// import { useStore } from "vuex";
-
-import store from 'store/store'
 import "element-plus/dist/index.css";
 import { ElButton, ElSteps, ElStep } from "element-plus";
 export default {
@@ -36,7 +28,7 @@ export default {
     ElSteps,
     ElStep,
   },
-  // props: { steps: { type: Array } },
+  props: { steps: { type: Array } },
   setup() {
     const active = ref(0);
 
@@ -44,9 +36,7 @@ export default {
       if (active.value++ > 2) active.value = 0;
     };
 
-    const steps = computed(() => store.state.steps);
-
-    return { active, next, steps };
+    return { active, next };
   },
 };
 </script>

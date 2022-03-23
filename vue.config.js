@@ -20,11 +20,14 @@ module.exports = defineConfig({
         name: 'MfeOne',
         filename: 'remoteEntry.js',
         remotes: {
-          ModuleAuth: 'ModuleAuth@http://localhost:9898/remoteEntry.js'
+          ModuleAuth: 'ModuleAuth@http://localhost:9898/remoteEntry.js',
+          store: 'MfeOne@http://localhost:9999/remoteEntry.js',
         },
         exposes: {
            './MfeOne': './src/bootstrap.js', // implica wrapper en consumer que use el mount exportado por main
-           './SharedComponent': './src/components/SharedComponent'
+           './SharedComponent': './src/components/SharedComponent',
+           './SharedComponentGeneric': './src/components/SharedComponentGeneric',
+           './store': './src/store/store.js'
         },
         shared: {
           vue: {

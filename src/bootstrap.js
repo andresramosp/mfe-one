@@ -27,7 +27,7 @@ const mount = (el) => {
     app.use(store)
     app.use(ElementPlus)
     app.mount(el)
-    // createApp(App).mount(el);
+
 };
 // let app = document.getElementById('app');
 // mount(app)
