@@ -21,7 +21,8 @@ module.exports = defineConfig({
         filename: 'remoteEntry.js',
         remotes: {
           ModuleAuth: 'ModuleAuth@http://localhost:9898/remoteEntry.js',
-          store: 'MfeOne@http://localhost:9999/remoteEntry.js',
+          // store: 'MfeOne@http://localhost:9999/remoteEntry.js',
+          store: 'MfeOne@https://module-federation-mfe-one.herokuapp.com/remoteEntry.js',
         },
         exposes: {
            './MfeOne': './src/bootstrap.js', // implica wrapper en consumer que use el mount exportado por main
