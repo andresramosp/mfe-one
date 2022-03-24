@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import MfeOneMainComponent from "../components/MfeOne-MainComponent.vue";
+import MfeOneMainComponent from "../components/MainComponent.vue";
 
 export default {
   name: "RouteOne",
