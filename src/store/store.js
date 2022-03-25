@@ -7,6 +7,7 @@ const store = createStore({
       userName: '',
       steps: [],
       stepsGeneric: [],
+      currentStep: 0,
     }
   },
   mutations: {
@@ -21,6 +22,9 @@ const store = createStore({
     },
     setStepsGeneric(state, steps) {
       state.stepsGeneric = steps
+    },
+    nextStep(state) {
+      if (state.currentStep++ > 2) state.currentStep = 0
     }
   },
   actions: {
@@ -40,7 +44,7 @@ const store = createStore({
         { name: 'Paso 1' },
         { name: 'Paso 2' }]
       state.commit('setStepsGeneric', steps)
-    }
+    },
   },
   getters: {
     logged(state) {

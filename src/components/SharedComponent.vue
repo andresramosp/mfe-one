@@ -1,8 +1,8 @@
 <template>
   <div style="padding: 20px;">
-    <span>Componente hospedado en MfeOne ligado al Store de MfeOne</span>
+    <span>Componente hospedado en MfeOne ligado al Store de MfeOne (cambia en ambos microfronts a la vez)</span>
     <div style="margin-top: 20px">
-      <el-steps :active="active" finish-status="success">
+      <el-steps :active="currentStep" finish-status="success">
         <el-step
           v-for="(step, index) of steps"
           :key="index"
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 
 // Si accedo al Store con useStore se usará un store distinto según
 // el MFE desde el que se ejecute. Si elegimos acoplar el store metiéndolo
@@ -38,15 +38,15 @@ export default {
   },
   // props: { steps: { type: Array } },
   setup() {
-    const active = ref(0);
 
     const next = () => {
-      if (active.value++ > 2) active.value = 0;
+      store.commit('nextStep');
     };
 
     const steps = computed(() => store.state.steps);
+    const currentStep = computed(() => store.state.currentStep);
 
-    return { active, next, steps };
+    return { currentStep, next, steps };
   },
 };
 </script>
