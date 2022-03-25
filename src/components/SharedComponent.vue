@@ -1,6 +1,6 @@
 <template>
-  <div style="padding: 20px">
-    <span>This is a shared component from MfeOne with State from MfeOne</span>
+  <div style="padding: 20px;">
+    <span>Componente hospedado en MfeOne ligado al Store de MfeOne</span>
     <div style="margin-top: 20px">
       <el-steps :active="active" finish-status="success">
         <el-step

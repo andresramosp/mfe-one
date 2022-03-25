@@ -1,23 +1,35 @@
 <template>
   <div class="hello">
-    <MfeOneChildComponent />
-    <div class="shared-comp">
-      <SharedComponent />
-    </div>
-      <div class="shared-comp-2">
-      <SharedComponentGeneric :steps="store.state.stepsGeneric" />
-    </div>
-    {{ moment().format("MMMM Do YYYY, h:mm:ss a") }}
+    <el-row :gutter="50">
+      <el-col :span="8"
+        ><div class="grid-content bg-purple" />
+        <MfeOneChildComponent />
+      </el-col>
+      <el-col :span="8"
+        ><div class="grid-content bg-purple" />
+        <div class="shared-comp">
+          <SharedComponent />
+        </div>
+      </el-col>
+      <el-col :span="8"
+        ><div class="grid-content bg-purple" />
+        <div class="shared-comp-2">
+          <SharedComponentGeneric :steps="store.state.stepsGeneric" />
+        </div>
+      </el-col>
+    </el-row>
+
+    Moment.js: <br /> {{ moment().format("MMMM Do YYYY, h:mm:ss a") }}
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
-import { useStore } from 'vuex'
+import { useStore } from "vuex";
 import moment from "moment";
 import MfeOneChildComponent from "./MfeOne-ChildComponent.vue";
 import SharedComponent from "./SharedComponent.vue";
-import SharedComponentGeneric from './SharedComponentGeneric.vue';
+import SharedComponentGeneric from "./SharedComponentGeneric.vue";
 
 export default {
   components: {
@@ -28,13 +40,13 @@ export default {
   props: {},
 
   setup() {
-    const store = useStore()
+    const store = useStore();
     const count = ref(0);
 
     return {
       count,
       moment,
-      store
+      store,
     };
   },
 
@@ -64,19 +76,17 @@ a {
 .shared-comp {
   background-color: lightgray;
   padding: 5px;
-  width: 400px;
-  margin-top: 10px;
-  position: absolute;
+  width: 100%;
+  /* position: absolute;
   right: 20px;
-  top: 150px;
+  top: 150px; */
 }
 .shared-comp-2 {
   background-color: lightseagreen;
   padding: 5px;
-  width: 400px;
-  margin-top: 10px;
-  position: absolute;
+  width: 100%;
+  /* position: absolute;
   right: 20px;
-  top: 370px;
+  top: 370px; */
 }
 </style>

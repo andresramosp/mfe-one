@@ -1,6 +1,6 @@
 <template>
-  <div style="padding: 20px">
-    <span>This is a shared generic component from MfeOne</span>
+  <div style="padding: 20px;">
+    <span>Componente genérico hospedado en MfeOne sin Store interno (usando props)</span>
     <div style="margin-top: 20px">
       <el-steps :active="active" finish-status="success">
         <el-step
