@@ -31,6 +31,7 @@ module.exports = defineConfig({
           {
             ModuleAuth: 'ModuleAuth@https://module-federation-module-auth.herokuapp.com/remoteEntry.js',
             store: 'MfeOne@https://module-federation-mfe-one.herokuapp.com/remoteEntry.js',
+            Shell: 'Shell@https://module-federation-mfe-consumer.herokuapp.com/remoteEntry.js'
           },
         exposes: {
           './MfeOne': './src/bootstrap.js',

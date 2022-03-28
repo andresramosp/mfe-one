@@ -1,24 +1,26 @@
 <template>
-  <el-card class="box-card">
-    <template #header>
-      <div class="card-header">
-        <span>Pets de Swagger PetStore, usando Api Cliente de Shell</span>
-        <el-button plain @click="sayHello" class="button" type="info"
-          >Hello To Micro Frontend Two</el-button
-        >
-      </div>
-    </template>
-    <div v-for="pet of pets" :key="pet" class="text item">{{ "Pet " + pet }}</div>
-  </el-card>
+  <div class="shared-comp-2">
+    Datos de PetStore, usando Client API común de la Shell
+    <el-table
+    :header-cell-style="{ background: 'lightgray', color: 'black' }"
+    :data="pets"
+    height="250"
+    style="width: 100%; margin-top: 20px"
+  >
+    <el-table-column prop="id" label="ID" :fixed="true" />
+    <el-table-column prop="name" label="Name" :fixed="true" />
+    <el-table-column prop="status" label="Status" :fixed="true" />
+  </el-table>
+  </div>
+  
 </template>
 
 <script>
-import { computed } from 'vue'
-import { useStore} from 'vuex'
+import { computed } from "vue";
+import { useStore } from "vuex";
 export default {
   setup() {
-
-    const store = useStore()
+    const store = useStore();
 
     const sayHello = () => {
       window.dispatchEvent(
@@ -31,7 +33,7 @@ export default {
       );
     };
 
-    const pets = computed(() => store.getters.pets )
+    const pets = computed(() => store.getters.pets);
 
     return { sayHello, pets };
   },

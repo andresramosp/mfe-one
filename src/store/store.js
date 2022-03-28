@@ -68,7 +68,14 @@ const store = createStore({
       return state.userName
     },
     pets(state) {
-      return state.pets.filter(p => p.name !== 'doggie').map(p => p.name).slice(0, 5)
+      return state.pets
+        .filter(p => p.name !== 'doggie')
+        .slice(0, 50)
+        .map(p => {
+          return {
+            ...p, id: parseInt(Math.random() * 1000)
+          }
+        })
     }
   }
 })

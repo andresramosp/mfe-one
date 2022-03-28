@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 20px;">
+  <div>
     <span>Componente genérico hospedado en MfeOne sin Store interno (usando props)</span>
     <div style="margin-top: 20px">
       <el-steps :active="active" finish-status="success">
