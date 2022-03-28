@@ -2,19 +2,24 @@
   <el-card class="box-card">
     <template #header>
       <div class="card-header">
-        <span>Card name</span>
+        <span>Pets de Swagger PetStore, usando Api Cliente de Shell</span>
         <el-button plain @click="sayHello" class="button" type="info"
           >Hello To Micro Frontend Two</el-button
         >
       </div>
     </template>
-    <div v-for="o in 4" :key="o" class="text item">{{ "List item " + o }}</div>
+    <div v-for="pet of pets" :key="pet" class="text item">{{ "Pet " + pet }}</div>
   </el-card>
 </template>
 
 <script>
+import { computed } from 'vue'
+import { useStore} from 'vuex'
 export default {
   setup() {
+
+    const store = useStore()
+
     const sayHello = () => {
       window.dispatchEvent(
         new CustomEvent("hello-event", {
@@ -26,7 +31,9 @@ export default {
       );
     };
 
-    return { sayHello };
+    const pets = computed(() => store.getters.pets )
+
+    return { sayHello, pets };
   },
 };
 </script>

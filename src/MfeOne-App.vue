@@ -23,6 +23,7 @@
 
 <script>
 import { auth$ } from "ModuleAuth/ModuleAuth";
+// import { PetApiFactory, Configuration } from "Shell/clientApi";
 import { computed } from "vue";
 import { useStore } from "vuex";
 
@@ -41,6 +42,22 @@ export default {
 
     store.dispatch("getSteps");
     store.dispatch("getStepsGeneric");
+    store.dispatch("getPets");
+
+    // console.log(PetApiFactory)
+
+
+    // const getPets = async () => {
+    //   const config = new Configuration({
+    //     basePath: window.location.origin, // 1
+    //   });
+    //   const apiFactory = PetApiFactory(config);
+    //   let result = await apiFactory.findPetsByStatus(["available"]);
+    //   console.log(result);
+    // };
+
+    // getPets();
+
 
     return {
       logged,

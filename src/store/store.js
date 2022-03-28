@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import { Configuration, PetApiFactory } from "Shell/clientApi";
 
 const store = createStore({
   state() {
@@ -8,6 +9,7 @@ const store = createStore({
       steps: [],
       stepsGeneric: [],
       currentStep: 0,
+      pets: []
     }
   },
   mutations: {
@@ -25,7 +27,10 @@ const store = createStore({
     },
     nextStep(state) {
       if (state.currentStep++ > 2) state.currentStep = 0
-    }
+    },
+    setPets(state, pets) {
+      state.pets = pets
+    },
   },
   actions: {
     setAuth(state, auth) {
@@ -45,6 +50,15 @@ const store = createStore({
         { name: 'Paso 2' }]
       state.commit('setStepsGeneric', steps)
     },
+    async getPets(state) {
+      const config = new Configuration({
+        basePath: window.location.origin, // 1
+      });
+      const apiFactory = PetApiFactory(config);
+      let result = await apiFactory.findPetsByStatus(['available'])
+      state.commit('setPets', result)
+      console.log(result)
+    }
   },
   getters: {
     logged(state) {
@@ -52,6 +66,9 @@ const store = createStore({
     },
     getUserName(state) {
       return state.userName
+    },
+    pets(state) {
+      return state.pets.filter(p => p.name !== 'doggie').map(p => p.name).slice(0, 5)
     }
   }
 })

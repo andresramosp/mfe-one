@@ -25,6 +25,7 @@ module.exports = defineConfig({
           {
             ModuleAuth: 'ModuleAuth@http://localhost:9898/remoteEntry.js',
             store: 'MfeOne@http://localhost:9999/remoteEntry.js',
+            Shell: 'Shell@http://localhost:8080/remoteEntry.js'
           } :
           // PRODUCTION
           {
