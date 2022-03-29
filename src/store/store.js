@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import { Configuration, PetApiFactory } from "Shell/clientApi";
+import { Configuration, PetApiFactory } from "Shell/clientApiOne";
 
 const store = createStore({
   state() {
