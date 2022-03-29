@@ -1,6 +1,6 @@
 <template>
-  <div style="padding: 20px;">
-    <span>Componente hospedado en MfeOne ligado al Store de MfeOne (cambia en los 3 microfronts a la vez)</span>
+  <div>
+    <span class="my-blue-class">Componente hospedado en MfeOne ligado al Store de MfeOne (cambia en los 3 microfronts a la vez)</span>
     <div style="margin-top: 20px">
       <el-steps :active="currentStep" finish-status="success">
         <el-step

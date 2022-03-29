@@ -11,7 +11,7 @@
     <h1>{{ "Micro Frontend One (Vue 3 + Vuex + Element Plus)" }}</h1>
 
     <br />
-    <div v-if="logged" style="margin-top: 20px">
+    <div v-if="logged" >
       <router-view v-slot="{ Component }">
         <keep-alive>
           <component :is="Component" />
@@ -68,12 +68,5 @@ export default {
 </script>
 
 <style>
-.not-logged {
-  background-color: pink;
-  width: 100px;
-}
-.logged {
-  background-color: greenyellow;
-  width: 250px;
-}
+
 </style>
