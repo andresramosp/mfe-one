@@ -40,11 +40,13 @@ module.exports = defineConfig({
           './store': './src/store/store.js'
         },
         shared: {
+          ...require('./package.json').dependencies,
           vue: {
             singleton: true,
-            requiredVersion: deps.vue
           },
-          ...require('./package.json').dependencies
+          'element-plus': {
+            singleton: true
+          }
         },
       })
     ]
