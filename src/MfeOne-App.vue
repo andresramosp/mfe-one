@@ -8,7 +8,7 @@
     <router-link style="margin-left: 10px" to="/mfeone-route2"
       >Route 2</router-link
     >
-    <h1>{{ "Micro Frontend One (Vue 3 + Element Plus)" }}</h1>
+    <h1>{{ "Micro Frontend One (Vue 3 + Vuex + Element Plus)" }}</h1>
 
     <br />
     <div v-if="logged" style="margin-top: 20px">
